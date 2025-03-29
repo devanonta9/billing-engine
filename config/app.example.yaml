@@ -4,7 +4,7 @@ APP:
 
 ROUTE:
   METHODS: [GET, POST, PUT, DELETE]
-  HEADERS: [Content-Type, Authorization, Authorization-ID, Accept-Key]
+  HEADERS: [Content-Type]
   ORIGIN: ['*']
 
 DATABASE:
