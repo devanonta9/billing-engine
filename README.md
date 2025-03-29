@@ -15,14 +15,13 @@ To build binary run the command ```go build -o [name.exe] main.go``` if Windows 
 Then run the binary by using command ```./name.exe``` or ```./name``` <br /><br />
 
 # Endpoint
-Auth Endpoint: <br />
-1. Login: POST ```baseUrl:portAddress/auth/login``` eg: ```localhost:8099/auth/login```. POST consists 2 data ```username``` and ```password``` on the raw request body as json <br />
-2. Logout: GET ```baseUrl:portAddress/auth/logout``` eg: ```localhost:8099/auth/logout```. <br /><br />
-
-Store Endpoint: <br />
-1. Upload File: POST ```baseUrl:portAddress/store/upload``` eg: ```localhost:8099/store/upload```. POST consist 1 data ```file``` on the form request body as file <br />
-2. Get List Files: GET ```baseUrl:portAddress/store/list``` eg: ```localhost:8099/store/list```. <br />
-3. Download File: GET ```baseUrl:portAddress/store/download``` eg: ```localhost:8099/store/download```. <br /><br />
+Endpoint: <br />
+1. Get User: Get ```baseUrl:portAddress/v1/users``` eg: ```localhost:8099/v1/users```. <br />
+2. Create Loan: POST ```baseUrl:portAddress/v1/loans``` eg: ```localhost:8099/v1/loans```. POST consists data on the raw request body as json<br />
+3. Check Delinquent: GET ```baseUrl:portAddress/v1/delinquents``` eg: ```localhost:8099/v1/delinquents```. GET consists data on the param<br />
+4. Get Billing: GET ```baseUrl:portAddress/v1/billings``` eg: ```localhost:8099/v1/billings```. GET consists data on the param<br />
+5. Create Payment: POST ```baseUrl:portAddress/v1/payments``` eg: ```localhost:8099/v1/payments```. POST consists data on the raw request body as json<br />
+6. Get Schedule: GET ```baseUrl:portAddress/v1/schedules``` eg: ```localhost:8099/v1/schedules```. GET consists data on the param<br />
 
 # Config
 Config is read from config.yaml file (rename to config.yaml from config-example.yaml or create a new one) <br />
