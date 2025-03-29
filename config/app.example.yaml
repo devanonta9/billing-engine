@@ -1,0 +1,21 @@
+APP:
+  NAME: xxx
+  PORT: 8888
+
+ROUTE:
+  METHODS: [GET, POST, PUT, DELETE]
+  HEADERS: [Content-Type, Authorization, Authorization-ID, Accept-Key]
+  ORIGIN: ['*']
+
+DATABASE:
+  READ:
+    USERNAME: xxx
+    PASSWORD: xxx
+    URL: localhost
+    PORT: 8989
+    DB_NAME: xxx
+    MAXIDLECONNS: 5
+    MAXOPENCONNS: 5
+    MAXLIFETIME: 31
+    TIMEOUT: 10
+    SSL_MODE: disable
