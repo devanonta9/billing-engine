@@ -160,12 +160,18 @@ func (bc BillingConfig) CheckIsDelinquents(ctx context.Context, param models.Bil
 func (bc BillingConfig) GetUserBillings(ctx context.Context, param models.BillingRequest) (*models.BillingResponse, error) {
 	var result models.BillingResponse
 
-	q := `SELECT l.total as amount_total, COALESCE(SUM(p.amount), 0) as amount_left FROM loans l
-	INNER JOIN payments p on l.id = p.loan_id 
-	WHERE p.user_id = $1 and p.loan_id = $2 AND p.status = 1
-	GROUP BY l.total`
+	q := `SELECT total as amount_total FROM loans 
+	WHERE user_id = $1 and id = $2`
 
-	err := bc.db.Backend.Read.GetContext(ctx, &result, q, param.UserID, param.LoanID)
+	err := bc.db.Backend.Read.GetContext(ctx, &result.AmountTotal, q, param.UserID, param.LoanID)
+	if err != nil && err != sql.ErrNoRows {
+		return nil, err
+	}
+
+	q2 := `SELECT COALESCE(SUM(amount), 0) as amount_left FROM payments
+	WHERE user_id = $1 and loan_id = $2 AND status = 1`
+
+	err = bc.db.Backend.Read.GetContext(ctx, &result.AmountLeft, q2, param.UserID, param.LoanID)
 	if err != nil && err != sql.ErrNoRows {
 		return nil, err
 	}

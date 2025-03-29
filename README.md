@@ -9,9 +9,10 @@ We are building a billing system for our Loan Engine. Basically the job of a bil
 3. Status of weather the customer is Delinquent or not <br /><br />
 
 # Command
+Run ```go mod tidy``` and ```go mod vendor``` to avoid inconsistency vendoring after clone the repo <br />
 We can run it by using ```go run main.go``` or we can build the binary first <br />
 To build binary run the command ```go build -o [name.exe] main.go``` if Windows or ```go build -o [name] main.go``` if macOS <br />
-Then run the binary by using command ```./name.exe``` or ```./name``` <br />
+Then run the binary by using command ```./name.exe``` or ```./name``` <br /><br />
 
 # Endpoint
 Auth Endpoint: <br />
@@ -45,7 +46,11 @@ The default are: <br /><br />
     ``MAXOPENCONNS: "5"`` <br />
     ``MAXLIFETIME: "31"`` <br />
     ``TIMEOUT: "10"`` <br />
-    ``SSL_MODE: "disable"`` <br />
+    ``SSL_MODE: "disable"`` <br /><br />
 
 # Collection
-Postman API collection = ```https://www.getpostman.com/collections/82b618929a79a13df4ce``` <br />
+Postman and Script are available in the repository <br /><br />
+
+# Tech Stack 
+1. Golang <br />
+2. PostgreSQL

@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "5c1137fa-39ac-4775-aa73-b064989ba551",
+		"name": "Billing Engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16785596",
+		"_collection_link": "https://beranda-anak.postman.co/workspace/e3bc9c41-b200-4a2e-86d5-b5ee184aa9ae/collection/16785596-5c1137fa-39ac-4775-aa73-b064989ba551?action=share&source=collection_link&creator=16785596"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"users"
+					]
+				},
+				"description": "\nThis endpoint makes an HTTP GET request to retrieve a list of users from the server. The request does not contain a request body. The response will have a status code of 200 and a content type of application/json. The response body will include an array of user objects, each containing an ID and a name.\n\n### Request Body\nThis request does not include a request body.\n\n### Response Body\nThe response will be in JSON format and will include the following fields:\n- status (string): Indicates the status of the response.\n- message (string): Provides any additional message related to the response.\n- data (array): Contains a list of user objects, each with the following fields:\n  - id (number): The unique identifier of the user.\n  - name (string): The name of the user.\n\n#### Example Response\n```json\n{\n    \"status\": \"\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 0,\n            \"name\": \"\"\n        }\n    ]\n}\n```\n"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8008/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 05:44:05 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"admin\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Loan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": 1,\r\n  \"amount\": 2000000.00,\r\n  \"interest\": 100.0,\r\n  \"week\": 4,\r\n  \"start\": \"2025-03-30T00:00:00Z\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8008/v1/loans",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"loans"
+					]
+				},
+				"description": "### Create a New Loan\n\nThis endpoint allows you to create a new loan by submitting the user ID, loan amount, interest, loan duration in weeks, and the start date.\n\n**Request Body**\n\n- `user_id` (integer): The ID of the user applying for the loan.\n- `amount` (integer): The amount of the loan requested.\n- `interest` (integer): The interest rate for the loan.\n- `week` (integer): The duration of the loan in weeks.\n- `start` (string): The start date of the loan in ISO 8601 format.\n    \n\n**Example Request Body:**\n\n``` json\n{\n    \"user_id\": 1,\n    \"amount\": 2000000,\n    \"interest\": 100,\n    \"week\": 4,\n    \"start\": \"2025-03-30T00:00:00Z\"\n}\n\n ```\n\n**Response**\n\n- `status` (string): The status of the loan creation request.\n- `message` (string): Additional information or error message related to the loan creation request.\n    \n\n**Example Response:**\n\n``` json\n{\n    \"status\": \"\",\n    \"message\": \"\"\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": 1,\r\n  \"amount\": 1000000.00,\r\n  \"interest\": 10.0,\r\n  \"week\": 10,\r\n  \"start\": \"2025-03-29T00:00:00Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8008/v1/loans",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"loans"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 06:02:44 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Check Delinquent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/v1/delinquents?user_id=1&loan_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"delinquents"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "loan_id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "The endpoint `localhost:8008/v1/delinquents` is a GET request used to retrieve delinquency information based on the provided `user_id` and `loan_id` parameters.\n\n### Response\n\nThe response for this request is a JSON object with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"string\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"is_delinquent\": {\n                    \"type\": \"boolean\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8008/v1/delinquents?user_id=1&loan_id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"delinquents"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "loan_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 06:32:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\",\n    \"data\": {\n        \"is_delinquent\": false\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Billing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/v1/billings?user_id=1&loan_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"billings"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "loan_id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "### GET /v1/billings\n\nThis endpoint retrieves billing information based on the provided user ID and loan ID.\n\n#### Request\n\n- Parameters\n    - user_id (integer, required): The ID of the user for whom billing information is requested.\n    - loan_id (integer, required): The ID of the loan for which billing information is requested.\n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"string\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"amount_total\": {\n                    \"type\": \"number\"\n                },\n                \"amount_left\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe response includes the following fields:\n\n- status (string): The status of the response.\n- message (string): Additional information or message related to the response.\n- data (object): The billing data containing the total amount and the remaining amount to be paid."
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8008/v1/billings?user_id=1&loan_id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"billings"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "loan_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 06:08:33 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "94"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\",\n    \"data\": {\n        \"amount_total\": 1100000,\n        \"amount_left\": 1100000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user_id\": 1,\r\n  \"loan_id\": 1,\r\n  \"amount\": 110000.00,\r\n  \"week\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8008/v1/payments",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"payments"
+					]
+				},
+				"description": "### Add Payment\n\nThis endpoint allows you to add a payment for a specific user and loan.\n\n#### Request Body\n\n- `user_id` (integer) - The ID of the user for whom the payment is being added.\n- `loan_id` (integer) - The ID of the loan for which the payment is being added.\n- `amount` (integer) - The amount of the payment.\n- `week` (integer) - The week number for which the payment is being made.\n    \n\n#### Response\n\n- `status` (string) - The status of the payment addition.\n- `message` (string) - Additional information or message related to the payment addition.\n    \n\n#### Example\n\n``` json\n{\n    \"status\": \"\",\n    \"message\": \"\"\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": 1,\r\n  \"amount\": 1000000.00,\r\n  \"interest\": 10.0,\r\n  \"week\": 10,\r\n  \"start\": \"2025-03-29T00:00:00Z\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8008/v1/loans",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"loans"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 06:02:44 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Schedule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8008/v1/schedules?user_id=1&loan_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"v1",
+						"schedules"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "loan_id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "### GET /v1/schedules\n\nThis endpoint retrieves the schedule details based on the provided user ID and loan ID.\n\n#### Request\n\n- Query Parameters\n    - user_id (required, integer): The ID of the user.\n    - loan_id (required, integer): The ID of the loan.\n\n#### Response\n\n- Status: 200 OK\n- Content-Type: application/json\n    \n\n##### Response Body\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"string\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"amount\": {\n                    \"type\": \"number\"\n                },\n                \"week\": {\n                    \"type\": \"number\"\n                },\n                \"interest_percentage\": {\n                    \"type\": \"number\"\n                },\n                \"total_amount\": {\n                    \"type\": \"number\"\n                },\n                \"weekly_payment\": {\n                    \"type\": \"number\"\n                },\n                \"start_date\": {\n                    \"type\": \"string\"\n                },\n                \"status\": {\n                    \"type\": \"string\"\n                },\n                \"weekly_data\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"amount_weekly\": {\n                                \"type\": \"number\"\n                            },\n                            \"week_number\": {\n                                \"type\": \"number\"\n                            },\n                            \"due_date\": {\n                                \"type\": \"string\"\n                            },\n                            \"paid_date\": {\n                                \"type\": \"string\"\n                            },\n                            \"status_weekly\": {\n                                \"type\": \"string\"\n                            }\n                        }\n                    }\n                },\n                \"amount_total\": {\n                    \"type\": \"number\"\n                },\n                \"amount_left\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8008/v1/schedules?user_id=1&loan_id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8008",
+							"path": [
+								"v1",
+								"schedules"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "loan_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 29 Mar 2025 08:38:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1538"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"success\",\n    \"data\": {\n        \"amount\": 1000000,\n        \"week\": 10,\n        \"interest_percentage\": 10,\n        \"total_amount\": 1100000,\n        \"weekly_payment\": 110000,\n        \"start_date\": \"2025-03-29T00:00:00Z\",\n        \"status\": \"Close\",\n        \"weekly_data\": [\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 1,\n                \"due_date\": \"2023-03-29T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:53\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 2,\n                \"due_date\": \"2023-04-05T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:43:24\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 3,\n                \"due_date\": \"2023-04-12T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:33:55\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 4,\n                \"due_date\": \"2025-04-19T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:33:55\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 5,\n                \"due_date\": \"2025-04-26T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 6,\n                \"due_date\": \"2025-05-03T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 7,\n                \"due_date\": \"2025-05-10T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 8,\n                \"due_date\": \"2025-05-17T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 9,\n                \"due_date\": \"2025-05-24T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            },\n            {\n                \"amount_weekly\": 110000,\n                \"week_number\": 10,\n                \"due_date\": \"2025-05-31T00:00:00Z\",\n                \"paid_date\": \"2025-03-29 07:40:02\",\n                \"status_weekly\": \"Paid\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
